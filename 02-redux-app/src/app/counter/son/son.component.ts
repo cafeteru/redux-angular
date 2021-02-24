@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import * as actions from '../counter.actions';
 
 @Component({
   selector: 'app-son',
@@ -6,25 +9,26 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./son.component.css']
 })
 export class SonComponent implements OnInit {
+  counter: number;
 
-  @Input() counter: number;
-  @Output() numberEmitter: EventEmitter<number>;
-
-  constructor() {
-    this.numberEmitter = new EventEmitter();
+  constructor(
+    private store: Store<AppState>
+  ) {
   }
 
   ngOnInit(): void {
+    this.store.select('counter').subscribe(
+      counter => this.counter = counter
+    );
   }
 
   multiply(): void {
-    this.counter *= 2;
-    this.numberEmitter.emit(this.counter);
+    this.store.dispatch(actions.multiply({ value: 2 }));
   }
 
   divide(): void {
-    this.counter /= 2;
-    this.numberEmitter.emit(this.counter);
+    this.store.dispatch(actions.divide({ value: 2 }));
   }
+
 
 }

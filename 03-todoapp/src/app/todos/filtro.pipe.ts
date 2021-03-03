@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { FiltrosType } from '../filtro/filtro.actions';
 import { Todo } from './models/todo';
 

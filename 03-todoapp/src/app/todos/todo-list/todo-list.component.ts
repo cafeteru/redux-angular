@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { FiltrosType as FiltroType } from 'src/app/filtro/filtro.actions';
+
 import { Todo } from '../models/todo';
 
 @Component({

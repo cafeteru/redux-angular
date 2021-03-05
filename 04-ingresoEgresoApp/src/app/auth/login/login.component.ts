@@ -26,13 +26,20 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     if (this.formGroup.valid) {
+      Swal.fire({
+        title: 'Espere por favor',
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
       const { correo, contrasenia } = this.formGroup.value;
       this.authService.login(correo, contrasenia).then(
         () => {
+          Swal.close();
           this.router.navigateByUrl('/');
         }
       ).catch(
-        err => Swal.fire({
+        (err: any) => Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: err.message,

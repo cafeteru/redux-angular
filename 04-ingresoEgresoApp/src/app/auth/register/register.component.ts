@@ -27,9 +27,16 @@ export class RegisterComponent implements OnInit {
 
   crearUsuario(): void {
     if (this.formGroup.valid) {
+      Swal.fire({
+        title: 'Espere por favor',
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
       const { nombre, correo, contrasenia } = this.formGroup.value;
       this.authService.crearUsuario(nombre, correo, contrasenia).then(
         () => {
+          Swal.close();
           this.router.navigateByUrl('/');
         }
       ).catch(

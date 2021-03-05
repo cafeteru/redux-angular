@@ -27,9 +27,11 @@ export class AuthService {
     email: string,
     contrasenia: string
   ): Promise<void> {
+    // Crea al usuario en firebase
     const fuser = await this.auth.createUserWithEmailAndPassword(email, contrasenia);
     const user = new Usuario(fuser.user.uid, nombre, email);
-    return this.afs.doc(`/usuario/${user.uid}`).set({ ...user });
+    // Crea el documento del usuario
+    return this.afs.doc(`/${user.uid}/usuario`).set({ ...user });
   }
 
   login(

@@ -17,4 +17,11 @@ export class AuthService {
   ): Promise<firebase.default.auth.UserCredential> {
     return this.auth.createUserWithEmailAndPassword(email, contrasenia);
   }
+
+  login(
+    email: string,
+    contrasenia: string
+  ): Promise<firebase.default.auth.UserCredential> {
+    return this.auth.signInWithEmailAndPassword(email, contrasenia);
+  }
 }

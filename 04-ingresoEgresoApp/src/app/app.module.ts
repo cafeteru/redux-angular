@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -22,6 +24,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
+registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +52,11 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'es'
+  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

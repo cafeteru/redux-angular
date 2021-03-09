@@ -13,7 +13,7 @@ export const initialState: State = {
 // tslint:disable-next-line: variable-name
 const _uiReducer = createReducer(
     initialState,
-    on(actions.isLoading, (state) => ({ ...state, isLoading: true })),
+    on(actions.initLoading, (state) => ({ ...state, isLoading: true })),
     on(actions.stopLoading, (state) => ({ ...state, isLoading: false })),
 );
 

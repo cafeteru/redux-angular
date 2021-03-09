@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/app.reducer';
 import { AuthService } from 'src/app/services/auth.service';
-import { isLoading, stopLoading } from 'src/app/shared/ui.actions';
+import { initLoading, stopLoading } from 'src/app/shared/ui.actions';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   crearUsuario(): void {
     if (this.formGroup.valid) {
-      this.store.dispatch(isLoading());
+      this.store.dispatch(initLoading());
       const { nombre, correo, contrasenia } = this.formGroup.value;
       this.authService.crearUsuario(nombre, correo, contrasenia).then(
         () => {

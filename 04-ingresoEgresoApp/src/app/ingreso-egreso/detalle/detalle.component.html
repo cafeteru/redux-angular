@@ -15,9 +15,9 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let item of ingresoEgresos">
+            <tr *ngFor="let item of ingresoEgresos | orderIngreso">
               <td>{{item.descripcion}}</td>
-              <td>{{item.monto | currency:'EUR':true}}</td>
+              <td>{{item.monto | currency:'EUR'}}</td>
               <td [class.text-success]="item.tipo === 'ingreso'" [class.text-danger]="item.tipo !== 'ingreso'">
                 {{item.tipo}}</td>
               <td>

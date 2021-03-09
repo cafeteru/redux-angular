@@ -23,9 +23,9 @@
             <label>Tipo</label>
             <br>
             <button *ngIf="tipo !== 'ingreso'" (click)="tipo = 'ingreso'" type="button"
-              class="btn btn-primary btn-block">Ingreso</button>
-            <button *ngIf="tipo !== 'egreso'" (click)="tipo = 'egreso'" type="button"
               class="btn btn-warning btn-block">Egreso</button>
+            <button *ngIf="tipo === 'ingreso'" (click)="tipo = 'egreso'" type="button"
+              class="btn btn-success btn-block">Ingreso</button>
           </div>
           <hr>
           <button type="submit" class="btn btn-success mr-2" [disabled]="formGroup.invalid" *ngIf="!loading">

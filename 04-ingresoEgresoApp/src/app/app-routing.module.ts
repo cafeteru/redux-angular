@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { dashBoardRoutes } from './dashboard/dashboard.routes';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
     {
@@ -17,12 +16,15 @@ const routes: Routes = [
     },
     {
         path: '',
-        component: DashboardComponent,
-        children: dashBoardRoutes
+        loadChildren: () =>
+            import('./ingreso-egreso/ingreso-egreso.module').then(
+                (i) => i.IngresoEgresoModule
+            ),
+        canLoad: [AuthGuard]
     },
     {
         path: '**',
-        redirectTo: ''
+        redirectTo: 'login'
     }
 ];
 

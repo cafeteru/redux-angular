@@ -1,8 +1,8 @@
-import { OrdeIngresoPipe } from './order-ingreso.pipe';
+import { OrderIngresoPipe } from './order-ingreso.pipe';
 
-describe('OrdeIngresoPipe', () => {
+describe('OrderIngresoPipe', () => {
   it('create an instance', () => {
-    const pipe = new OrdeIngresoPipe();
+    const pipe = new OrderIngresoPipe();
     expect(pipe).toBeTruthy();
   });
 });

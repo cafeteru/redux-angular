@@ -5,7 +5,7 @@ import { IngresoEgreso } from '../models/ingreso-egreso';
 @Pipe({
   name: 'orderIngreso'
 })
-export class OrdeIngresoPipe implements PipeTransform {
+export class OrderIngresoPipe implements PipeTransform {
 
   transform(items: IngresoEgreso[]): IngresoEgreso[] {
     return items.slice().sort((a, b) => {

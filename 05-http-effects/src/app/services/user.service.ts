@@ -21,4 +21,10 @@ export class UserService {
       map(page => page.data)
     );
   }
+
+  getUserById(id: string): Observable<User> {
+    return this.http.get<any>(`${this.url}/users/${id}`).pipe(
+      map(page => page.data)
+    );
+  }
 }
